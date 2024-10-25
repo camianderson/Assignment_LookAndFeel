@@ -23,6 +23,10 @@ header h1 {
   margin: 0;
 }
 
+nav {
+  position: relative;
+}
+
 nav ul {
   list-style: none;
   padding: 0;
@@ -48,6 +52,53 @@ nav ul li a:hover {
   background-color: rgba(184, 134, 11, 0.8);
   color: #fff; 
   box-shadow: 0 0 10px rgba(184, 134, 11, 0.6); 
+}
+
+.hamburger {
+  display: none;
+  font-size: 2em;
+  cursor: pointer;
+  color: #fff;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1100;
+}
+
+nav ul.responsive {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ff8ab4;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  padding: 20px 0;
+  z-index: 1000;
+}
+
+nav ul.responsive li {
+  margin: 10px 0;
+}
+
+nav ul.responsive li a {
+  font-size: 1.2em;
+  padding: 10px 20px;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  nav ul {
+    display: none; 
+  }
+
+  nav ul.responsive {
+    display: flex;
+  }
 }
 
 .hero {
