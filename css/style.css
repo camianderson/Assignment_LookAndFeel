@@ -1,19 +1,29 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* General */
 body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
   background-color: #fdf2f8;
   color: #333;
 }
 
+/* Header */
 header {
   background: linear-gradient(to right, #ff8ab4, #ffd1dc);
   padding: 20px;
   text-align: center;
   position: sticky;
   top: 0;
+  width: 100%;
   z-index: 1000;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
@@ -23,16 +33,14 @@ header h1 {
   margin: 0;
 }
 
-nav {
-  position: relative;
-}
-
+/* Nav  */
 nav ul {
   list-style: none;
   padding: 0;
-  margin: 20px 0 0;
+  margin: 0;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 nav ul li {
@@ -40,6 +48,7 @@ nav ul li {
 }
 
 nav ul li a {
+  display: inline-block;
   text-decoration: none;
   font-size: 1.2em;
   color: #fff;
@@ -50,10 +59,10 @@ nav ul li a {
 
 nav ul li a:hover {
   background-color: rgba(184, 134, 11, 0.8);
-  color: #fff; 
-  box-shadow: 0 0 10px rgba(184, 134, 11, 0.6); 
+  box-shadow: 0 0 10px rgba(184, 134, 11, 0.6);
 }
 
+/* Hamburger Menu */
 .hamburger {
   display: none;
   font-size: 2em;
@@ -65,42 +74,37 @@ nav ul li a:hover {
   z-index: 1100;
 }
 
-nav ul.responsive {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #ff8ab4;
-  position: absolute;
-  top: 60px;
-  left: 0;
-  width: 100%;
-  padding: 20px 0;
-  z-index: 1000;
-}
-
-nav ul.responsive li {
-  margin: 10px 0;
-}
-
-nav ul.responsive li a {
-  font-size: 1.2em;
-  padding: 10px 20px;
-}
-
 @media (max-width: 768px) {
   .hamburger {
     display: block;
   }
 
   nav ul {
-    display: none; 
+    display: none;
   }
 
   nav ul.responsive {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ff8ab4;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  nav ul.responsive li {
+    margin: 10px 0;
+  }
+
+  nav ul.responsive li a {
+    padding: 10px 20px;
   }
 }
 
+/* Hero */
 .hero {
   position: relative; 
   background: url('../img/hero.png') no-repeat center center/cover;
@@ -111,7 +115,6 @@ nav ul.responsive li a {
   text-align: center;
   color: #fff;
   padding: 20px;
-  overflow: hidden;
 }
 
 .hero::before {
@@ -121,7 +124,7 @@ nav ul.responsive li a {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.2); 
+  background: rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -138,29 +141,30 @@ nav ul.responsive li a {
 }
 
 .hero-content p {
-  font-size: 1.4em; 
+  font-size: 1.4em;
   margin-bottom: 20px;
-  font-weight: bold; 
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(255, 255, 255, 0.5); 
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.9), 1px 1px 3px rgba(255, 255, 255, 0.5);
 }
 
 .hero-content button {
   background: linear-gradient(to right, #ff8ab4, #ffd1dc);
   color: #fff;
-  padding: 12px 25px; 
+  padding: 12px 25px;
   border: none;
   border-radius: 25px;
-  font-size: 1.2em; 
-  font-weight: bold; 
+  font-size: 1.2em;
+  font-weight: bold;
   cursor: pointer;
   transition: background 0.3s, box-shadow 0.3s;
 }
 
 .hero-content button:hover {
   background: linear-gradient(to right, #ffd1dc, #ff8ab4);
-  box-shadow: 0 5px 15px rgba(255, 128, 172, 0.6); 
+  box-shadow: 0 5px 15px rgba(255, 128, 172, 0.6);
 }
 
+/* Clothing List */
 .clothing-showcase {
   padding: 40px 20px;
   text-align: center;
@@ -197,13 +201,12 @@ nav ul.responsive li a {
   color: #ff66a1;
 }
 
+/* Footer */
 footer {
   background-color: #ff8ab4;
   color: #fff;
   padding: 15px;
   text-align: center;
-  position: relative;
-  bottom: 0;
   width: 100%;
 }
 
