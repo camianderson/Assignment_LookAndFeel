@@ -278,3 +278,118 @@ footer p {
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+/* Managing Clothing */
+
+/* Form */
+.manage-wardrobe h2, .manage-wardrobe h3 {
+  color:#7a5a09;
+}
+
+.form-container {
+  margin-bottom: 20px;
+  padding: 20px;
+  position: relative;
+  border: 2px solid #ffd1dc;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.form-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../img/glitter\ 2.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.form-container label {
+  display: block;
+  font-weight: bold;
+  margin: 10px 0 5px;
+  color: #7a5a09;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  color: #7a5a09;
+}
+
+button {
+  background: linear-gradient(to right, #ff8ab4, #ffd1dc);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+  background: linear-gradient(to right, #ffd1dc, #ff8ab4);
+  box-shadow: 0 5px 15px rgba(255, 128, 172, 0.6);
+}
+
+/* Wardrobe Item List */
+.clothing-items {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.clothing-item {
+  width: 200px;
+  padding: 15px;
+  background: #fff;
+  border: 2px solid #ffd1dc;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+}
+
+.clothing-item h4 {
+  font-size: 1.2em;
+  margin: 10px 0;
+  color: #7a5a09;
+}
+
+.clothing-item p {
+  margin-bottom: 10px;
+  font-size: 1em;
+  color: #7a5a09;
+}
+
+.clothing-item button {
+  margin: 5px;
+  padding: 5px 10px;
+  font-size: 0.9em;
+  border-radius: 15px;
+  background: linear-gradient(to right, #ffd1dc, #ff8ab4);
+}
+
+.clothing-item button:hover {
+  background: linear-gradient(to right, #ff8ab4, #ffd1dc);
+}
+
+/* Edit Mode Styling */
+.edit-mode {
+  background: rgba(255, 215, 0, 0.2);
+}
