@@ -1,7 +1,9 @@
 // Hamburger Menu
 function toggleMenu() {
   const navLinks = document.getElementById('navLinks');
-  navLinks.classList.toggle('responsive');
+  if (navLinks) {
+    navLinks.classList.toggle('responsive');
+  }
 }
 
 // Manage Clothing
@@ -14,18 +16,36 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-function createItem() {
+// Create or update an item in the wardrobe
+function createOrUpdateItem() {
   const clothingItem = document.getElementById('clothingItem').value;
   const color = document.getElementById('color').value;
+  const editingId = document.getElementById('clothingForm').dataset.editingId;
+  const submitBtn = document.getElementById('submitBtn');
 
   if (clothingItem && color) {
-      const newItem = {
-          id: Date.now(),
-          name: clothingItem,
-          color: color
-      };
       let items = getItemsFromLocalStorage();
-      items.push(newItem);
+
+      if (editingId) {
+          const itemIndex = items.findIndex(i => i.id === parseInt(editingId));
+          if (itemIndex !== -1) {
+              items[itemIndex].name = clothingItem;
+              items[itemIndex].color = color;
+
+              document.getElementById('clothingForm').dataset.editingId = '';
+              if (submitBtn) {
+                  submitBtn.textContent = 'Add Clothing Item';
+              }
+          }
+      } else {
+          const newItem = {
+              id: Date.now(),
+              name: clothingItem,
+              color: color
+          };
+          items.push(newItem);
+      }
+
       saveItemsToLocalStorage(items);
       displayItems();
       document.getElementById('clothingForm').reset(); 
@@ -57,30 +77,22 @@ function displayItems() {
 function editItem(id) {
   const items = getItemsFromLocalStorage();
   const item = items.find(i => i.id === id);
+  const submitBtn = document.getElementById('submitBtn');
 
   if (item) {
       document.getElementById('clothingItem').value = item.name;
       document.getElementById('color').value = item.color;
       document.getElementById('clothingForm').dataset.editingId = id;
+
+      if (submitBtn) {
+          submitBtn.textContent = 'Update Clothing Item';
+      }
   }
 }
 
 document.getElementById('clothingForm')?.addEventListener('submit', (e) => {
   e.preventDefault();
-
-  const editingId = document.getElementById('clothingForm').dataset.editingId;
-  if (editingId) {
-      const items = getItemsFromLocalStorage();
-      const item = items.find(i => i.id === parseInt(editingId));
-
-      item.name = document.getElementById('clothingItem').value;
-      item.color = document.getElementById('color').value;
-
-      saveItemsToLocalStorage(items);
-      displayItems();
-      document.getElementById('clothingForm').reset();
-      delete document.getElementById('clothingForm').dataset.editingId;
-  }
+  createOrUpdateItem();
 });
 
 function deleteItem(id) {
@@ -133,8 +145,8 @@ function displayTrendingOutfitsChart() {
               datasets: [{
                   label: 'Number of Times Added',
                   data: data,
-                  backgroundColor: 'rgba(209, 123, 123, 0.6)', // Pinkish color for bars
-                  borderColor: 'rgba(209, 123, 123, 1)', // Darker pink border
+                  backgroundColor: 'rgba(209, 123, 123, 0.6)',
+                  borderColor: 'rgba(209, 123, 123, 1)',
                   borderWidth: 1
               }]
           },

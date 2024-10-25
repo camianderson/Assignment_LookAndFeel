@@ -19,14 +19,13 @@ body {
 
 main {
   flex: 1; 
-  padding: 40px 20px;
   text-align: center;
 }
 
 /* Header */
 header {
   background: linear-gradient(to right, #d68281, #f2d6d0);
-  padding: 20px;
+  padding: 15px 20px 0px 20px;
   text-align: center;
   position: sticky;
   top: 0;
@@ -46,7 +45,7 @@ header h1 {
 nav ul {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 10px 0;
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -84,41 +83,11 @@ nav ul li a:hover {
   z-index: 1100;
 }
 
-@media (max-width: 768px) {
-  .hamburger {
-    display: block;
-  }
-
-  nav ul {
-    display: none;
-  }
-
-  nav ul.responsive {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #d68281;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    padding: 20px 0;
-  }
-
-  nav ul.responsive li {
-    margin: 10px 0;
-  }
-
-  nav ul.responsive li a {
-    padding: 10px 20px;
-  }
-}
-
 /* Hero */
 .hero {
   position: relative; 
   background: url('../img/hero.png') no-repeat center center/cover;
-  height: 40vh;
+  height: 34vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -182,7 +151,7 @@ nav ul li a:hover {
 
 .clothing-showcase h2 {
   font-size: 2.5em;
-  margin-bottom: 20px;
+  margin-top: 20px;
   color: #ff66a1;
   text-shadow: 0 0 8px rgba(255, 102, 161, 0.5);
 }
@@ -287,7 +256,7 @@ footer p {
 }
 
 .form-container {
-  margin-bottom: 20px;
+  margin: 0px 80px 0px 80px;
   padding: 20px;
   position: relative;
   border: 2px solid #ffd1dc;
@@ -389,7 +358,6 @@ button:hover {
   background: linear-gradient(to right, #ff8ab4, #ffd1dc);
 }
 
-/* Edit Mode Styling */
 .edit-mode {
   background: rgba(255, 215, 0, 0.2);
 }
@@ -406,4 +374,169 @@ canvas {
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Resoinsive */
+
+/* @media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  nav ul {
+    display: none;
+  }
+
+  nav ul.responsive {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #d68281;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  nav ul.responsive li {
+    margin: 10px 0;
+  }
+
+  nav ul.responsive li a {
+    padding: 10px 20px;
+  }
+} */
+
+/* Small screens */
+@media (max-width: 480px) {
+  .hamburger {
+    display: block;
+  }
+
+  nav ul {
+    display: none;
+  }
+
+  nav ul.responsive {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #d68281;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  nav ul.responsive li {
+    margin: 10px 0;
+  }
+
+  nav ul.responsive li a {
+    padding: 15px 20px;
+    font-size: 1.1em;
+  }
+
+  header h1 {
+    font-size: 1.8em; 
+    margin: 10px 0; 
+  }
+
+  .hero-content h2 {
+    font-size: 2em;
+  }
+
+  .hero-content p {
+    font-size: 1em;
+  }
+
+  button {
+    font-size: 0.9em;
+    padding: 8px 15px;
+  }
+
+  .about-content {
+   flex-direction:column;
+  }
+}
+
+/* Medium screens */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  nav ul {
+    display: none;
+  }
+
+  nav ul.responsive {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #d68281;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  nav ul.responsive li {
+    margin: 10px 0;
+  }
+
+  nav ul.responsive li a {
+    padding: 15px 25px;
+    font-size: 1.2em;
+  }
+
+  header h1 {
+    font-size: 2em;
+  }
+
+  .hero-content h2 {
+    font-size: 2.5em;
+  }
+
+  .hero-content p {
+    font-size: 1.2em;
+  }
+
+  button {
+    font-size: 1em;
+    padding: 10px 20px;
+  }
+}
+
+/* Large screens */
+@media (min-width: 769px) {
+  nav ul {
+    display: flex;
+    justify-content: center;
+  }
+
+  nav ul li a {
+    padding: 8px 15px;
+    font-size: 1.2em;
+  }
+
+  header h1 {
+    font-size: 2.5em;
+  }
+
+  .hero-content h2 {
+    font-size: 3.5em;
+  }
+
+  .hero-content p {
+    font-size: 1.4em;
+  }
+
+  button {
+    font-size: 1.2em;
+    padding: 12px 25px;
+  }
 }
