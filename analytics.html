@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - Glittery World</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>GLITTERY WORLD</h1>
+        <nav>
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
+            <ul id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="manageclothing.html">Manage Your Wardrobe</a></li>
+                <li><a href="analytics.html">Analytics</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Your Trending Outfits</h2>
+            <div class="chart-container">
+                <canvas id="trendingOutfitsChart"></canvas>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Glittery World</p>
+    </footer>
+    <script src="./js/main.js"></script>
+</body>
+</html>

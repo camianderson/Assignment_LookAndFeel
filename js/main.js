@@ -7,6 +7,11 @@ function toggleMenu() {
 // Manage Clothing
 document.addEventListener('DOMContentLoaded', () => {
   loadItems(); 
+
+  const chartCanvas = document.getElementById('trendingOutfitsChart');
+  if (chartCanvas) {
+    displayTrendingOutfitsChart();
+  }
 });
 
 function createItem() {
@@ -31,6 +36,8 @@ function createItem() {
 
 function displayItems() {
   const clothingList = document.getElementById('clothingList');
+  if (!clothingList) return; 
+
   clothingList.innerHTML = ''; 
   const items = getItemsFromLocalStorage();
 
@@ -58,7 +65,7 @@ function editItem(id) {
   }
 }
 
-document.getElementById('clothingForm').addEventListener('submit', (e) => {
+document.getElementById('clothingForm')?.addEventListener('submit', (e) => {
   e.preventDefault();
 
   const editingId = document.getElementById('clothingForm').dataset.editingId;
@@ -93,4 +100,70 @@ function saveItemsToLocalStorage(items) {
 
 function loadItems() {
   displayItems();
+}
+
+// Analytics
+function displayTrendingOutfitsChart() {
+  const items = getItemsFromLocalStorage();
+
+  if (items.length === 0) {
+      alert('No clothing items found. Add items to manage wardrobe.');
+      return;
+  }
+
+  const itemCounts = {};
+  items.forEach(item => {
+      if (itemCounts[item.name]) {
+          itemCounts[item.name]++;
+      } else {
+          itemCounts[item.name] = 1;
+      }
+  });
+
+  const labels = Object.keys(itemCounts);
+  const data = Object.values(itemCounts);
+
+  const chartCanvas = document.getElementById('trendingOutfitsChart');
+  if (chartCanvas) {
+      const ctx = chartCanvas.getContext('2d');
+      new Chart(ctx, {
+          type: 'bar',
+          data: {
+              labels: labels,
+              datasets: [{
+                  label: 'Number of Times Added',
+                  data: data,
+                  backgroundColor: 'rgba(209, 123, 123, 0.6)', // Pinkish color for bars
+                  borderColor: 'rgba(209, 123, 123, 1)', // Darker pink border
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              responsive: true,
+              scales: {
+                  y: {
+                      beginAtZero: true,
+                      title: {
+                          display: true,
+                          text: 'Number of Times Added'
+                      }
+                  },
+                  x: {
+                      title: {
+                          display: true,
+                          text: 'Clothing Items'
+                      }
+                  }
+              },
+              plugins: {
+                  legend: {
+                      display: true,
+                      position: 'top'
+                  }
+              }
+          }
+      });
+  } else {
+      console.log('Chart canvas not found.');
+  }
 }
